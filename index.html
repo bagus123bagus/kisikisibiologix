@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembahasan Kisi-Kisi Biologi Kelas X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #27ae60;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #2c3e50;
+            --bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --sidebar-bg: #f1f3f4;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .dark-mode {
+            --primary: #27ae60;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --light: #2c3e50;
+            --dark: #ecf0f1;
+            --text: #ecf0f1;
+            --bg: #1a1a2e;
+            --card-bg: #16213e;
+            --sidebar-bg: #0f3460;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Welcome Animation */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .welcome-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .welcome-content {
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.3s forwards;
+        }
+
+        .welcome-text {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .creator-text {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            animation: loading 2.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes loading {
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.3rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(15deg);
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            gap: 25px;
+            margin: 25px 0;
+            min-height: calc(100vh - 140px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            flex: 0 0 320px;
+            background-color: var(--sidebar-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 140px);
+            overflow-y: auto;
+            transition: var(--transition);
+        }
+
+        .sidebar-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .sidebar-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: var(--transition);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            border-left-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .nav-link.active {
+            background-color: rgba(39, 174, 96, 0.1);
+            border-left-color: var(--primary);
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-number {
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .welcome-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .welcome-section h1 {
+            margin-bottom: 1.2rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .welcome-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: var(--transition);
+            animation: slideUp 0.6s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+
+        .section-title i {
+            color: var(--accent);
+            font-size: 2rem;
+        }
+
+        .indicators-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .indicator-card {
+            background-color: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            transition: var(--transition);
+            border-left: 6px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .indicator-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .indicator-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .indicator-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .indicator-number {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            background-color: rgba(39, 174, 96, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .indicator-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .indicator-content {
+            margin-top: 1.5rem;
+        }
+
+        .indicator-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .indicator-content ul, .indicator-content ol {
+            padding-left: 1.8rem;
+            margin: 1rem 0;
+        }
+
+        .indicator-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .tip-box {
+            background: rgba(39, 174, 96, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tip-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .example-box {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .info-title {
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 2rem 0;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 99;
+            font-size: 1.3rem;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+        }
+
+        .creator {
+            margin-top: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-layout {
+                gap: 20px;
+            }
+            
+            .sidebar {
+                flex: 0 0 280px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+                margin-bottom: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .nav-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 0.8rem;
+            }
+
+            .nav-item {
+                margin-bottom: 0;
+            }
+
+            .nav-link {
+                text-align: left;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                padding: 1rem;
+            }
+
+            .nav-link:hover, .nav-link.active {
+                border-left: none;
+                border-bottom-color: var(--primary);
+                transform: translateY(-3px);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 3rem;
+            }
+
+            .welcome-section {
+                padding: 2rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-card {
+                padding: 2rem;
+            }
+
+            .indicator-card {
+                padding: 1.5rem;
+            }
+
+            .indicator-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-list {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .welcome-text {
+                font-size: 2.5rem;
+            }
+
+            .welcome-section {
+                padding: 1.5rem;
+            }
+
+            .welcome-section h1 {
+                font-size: 1.7rem;
+            }
+
+            .welcome-section p {
+                font-size: 1.1rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .indicator-card {
+                padding: 1.2rem;
+            }
+
+            .indicator-title {
+                font-size: 1.2rem;
+            }
+
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+            }
+
+            .scroll-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Animation -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-content">
+            <div class="welcome-text">Welcome!</div>
+            <div class="creator-text">Dibuat oleh Gishan R.A</div>
+            <center>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            </center>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-dna"></i>
+                    Kisi-Kisi Biologi Kelas X
+                </div>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h3 class="sidebar-title">
+                        <i class="fas fa-list-ol"></i>
+                        Daftar Pembahasan
+                    </h3>
+                </div>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-box" id="searchBox" placeholder="Cari materi...">
+                </div>
+                <ul class="nav-list" id="navList">
+                    <!-- Navigation items will be generated by JavaScript -->
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Welcome Section -->
+                <section class="welcome-section" id="welcome">
+                    <h1>Pembahasan Kisi-Kisi Biologi Kelas X</h1> 
+                </section>
+
+                <!-- Content sections will be generated by JavaScript -->
+                <div id="contentContainer"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Pembahasan Kisi-Kisi Biologi Kelas X</p>
+            <p class="creator">Dibuat oleh Gishan R.A</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data lengkap untuk konten kisi-kisi Biologi
+        const kisiKisiData = [
+            {
+                category: "Keanekaragaman Hayati – Nomor 1-6 & 22 & 25-27",
+                icon: "fas fa-leaf",
+                indicators: [
+                    {
+                        number: 1,
+                        title: "Identifikasi tingkat keanekaragaman hayati",
+                        content: `
+                            <p>Keanekaragaman hayati memiliki 3 tingkat:</p>
+                            <ul>
+                                <li><strong>Gen</strong> → variasi dalam satu spesies (contoh: warna bunga berbeda pada satu jenis tanaman).</li>
+                                <li><strong>Spesies</strong> → perbedaan antar spesies (kucing vs harimau).</li>
+                                <li><strong>Ekosistem</strong> → perbedaan lingkungan (hutan hujan, padang rumput, tundra).</li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Cara Identifikasi:</div>
+                                <ul>
+                                    <li>Jika narasi bicara <em>variasi dalam satu populasi</em>, itu <strong>tingkat gen</strong>.</li>
+                                    <li>Jika bicara <em>banyak jenis makhluk hidup</em>, itu <strong>spesies</strong>.</li>
+                                    <li>Jika bicara <em>tipe habitat</em>, itu <strong>ekosistem</strong>.</li>
+                                </ul>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 2,
+                        title: "Fauna Oriental (Indonesia Barat)",
+                        content: `
+                            <p><strong>Ciri fauna Oriental</strong> (Sumatra, Jawa, Kalimantan, Bali):</p>
+                            <ul>
+                                <li>Mamalia besar</li>
+                                <li>Banyak primata</li>
+                                <li>Ada kucing besar</li>
+                            </ul>
+                            
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-paw"></i> Contoh fauna Oriental:</div>
+                                <ul>
+                                    <li>Harimau Sumatra</li>
+                                    <li>Orangutan Kalimantan</li>
+                                    <li>Badak bercula satu</li>
+                                    <li>Gajah Sumatra</li>
+                                    <li>Tapir</li>
+                                </ul>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 3,
+                        title: "Menentukan bioma",
+                        content: `
+                            <p>Bioma ditentukan oleh:</p>
+                            <ul>
+                                <li><strong>Iklim</strong> (curah hujan & suhu)</li>
+                                <li><strong>Vegetasi</strong></li>
+                            </ul>
+                            
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-tree"></i> Contoh:</div>
+                                <ul>
+                                    <li>Curah hujan tinggi + pohon tinggi → <strong>Hutan hujan tropis</strong></li>
+                                    <li>Dingin ekstrem + lumut → <strong>Tundra</strong></li>
+                                    <li>Semak & rumput + musim panas → <strong>Sabana</strong></li>
+                                    <li>Hujan sangat sedikit + kaktus → <strong>Gurun</strong></li>
+                                </ul>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 4,
+                        title: "Tingkatan taksonomi paling banyak kesamaan",
+                        content: `
+                            <p>Urutan takson: <strong>Kingdom–Filum–Kelas–Ordo–Famili–Genus–Spesies</strong></p>
+                            
+                            <div class="info-box">
+                                <div class="info-title"><i class="fas fa-info-circle"></i> Konsep Penting:</div>
+                                <p>Semakin ke bawah, semakin mirip.</p>
+                                <ul>
+                                    <li><strong>Spesies</strong> = paling banyak kesamaan ciri.</li>
+                                    <li><strong>Genus</strong> = mirip, tapi tidak seidentik spesies.</li>
+                                </ul>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 5,
+                        title: "Menentukan tingkat keanekaragaman dari variasi ciri fisik",
+                        content: `
+                            <ul>
+                                <li>Variasi antar individu dalam satu spesies → <strong>Keanekaragaman gen</strong>.</li>
+                                <li>Jika yang dibahas banyak spesies → <strong>Keanekaragaman spesies</strong>.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 6,
+                        title: "Identifikasi nama ilmiah (Binomial Nomenklatur)",
+                        content: `
+                            <p><strong>Aturan:</strong></p>
+                            <ul>
+                                <li>2 kata: <strong>Genus + spesies</strong></li>
+                                <li>Genus huruf besar, spesies huruf kecil</li>
+                                <li>Ditulis miring / digarisbawahi</li>
+                            </ul>
+                            
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-quote-right"></i> Contoh:</div>
+                                <p><em>Homo sapiens</em></p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 22,
+                        title: "Keanekaragaman hayati & garis fauna Indonesia",
+                        content: `
+                            <p><strong>Garis pemisah fauna:</strong></p>
+                            <ul>
+                                <li><strong>Wallace</strong> → pembatas fauna oriental & australis</li>
+                                <li><strong>Weber</strong> → batas tengah</li>
+                            </ul>
+                            
+                            <p><strong>Faktor ekosistem:</strong> iklim, tanah, topografi.</p>
+                        `
+                    },
+                    {
+                        number: 25,
+                        title: "Kaidah penulisan nama ilmiah",
+                        content: `
+                            <p><strong>Aturan:</strong></p>
+                            <ul>
+                                <li>Dua kata (Genus + spesies)</li>
+                                <li>Genus kapital, spesies tidak</li>
+                                <li>Miring atau garis bawah</li>
+                                <li>Tidak boleh disingkat untuk pertama kali</li>
+                                <li>Nama latin, bukan bahasa lokal</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 26,
+                        title: "Upaya pelestarian Ex Situ",
+                        content: `
+                            <p>Ciri Ex Situ: <strong>di luar habitat asli</strong></p>
+                            
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-seedling"></i> Contoh:</div>
+                                <ul>
+                                    <li>Kebun binatang</li>
+                                    <li>Kebun raya</li>
+                                    <li>Penangkaran</li>
+                                    <li>Bank gen / bank biji</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Catatan:</div>
+                                <p>In Situ = di habitat asli (bukan yang ini).</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 27,
+                        title: "Fauna Oriental (pengulangan dari nomor 2)",
+                        content: `
+                            <p><strong>Spesies khas Oriental:</strong></p>
+                            <ul>
+                                <li>Harimau Sumatra</li>
+                                <li>Gajah Asia</li>
+                                <li>Orangutan</li>
+                                <li>Tapir</li>
+                                <li>Badak bercula satu</li>
+                            </ul>
+                        `
+                    }
+                ]
+            },
+            {
+                category: "Virus & Penyakit – Nomor 7-16 & 23-24 & 28-29",
+                icon: "fas fa-virus",
+                indicators: [
+                    {
+                        number: 7,
+                        title: "Tindakan tidak etis di area konservasi",
+                        content: `
+                            <p><strong>Perilaku berbahaya:</strong></p>
+                            <ul>
+                                <li>Memberi makan hewan liar</li>
+                                <li>Mengambil foto terlalu dekat</li>
+                                <li>Membuang sampah</li>
+                                <li>Memprovokasi hewan</li>
+                                <li>Merusak habitat</li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Yang benar:</div>
+                                <p>menjaga jarak, tidak memberi makan, tidak merusak.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 8,
+                        title: "Penyakit pada tumbuhan yang disebabkan virus",
+                        content: `
+                            <p><strong>Virus tumbuhan:</strong></p>
+                            <ul>
+                                <li>TMV (Tobacco Mosaic Virus)</li>
+                                <li>CVPD (Citrus Vein Phloem Degeneration)</li>
+                                <li>Tungro (padi)</li>
+                                <li>Leaf curl (cabai, tomat)</li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Identifikasi:</div>
+                                <p>nama penyakit yang menyerang <strong>tumbuhan</strong>, bukan manusia/hewan.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 9,
+                        title: "Pemanfaatan virus dalam bioteknologi",
+                        content: `
+                            <p>Virus dimanfaatkan sebagai:</p>
+                            <ul>
+                                <li><strong>Vektor genetik</strong> untuk memasukkan gen baru</li>
+                                <li><strong>Pembuat vaksin</strong></li>
+                                <li><strong>Terapi gen</strong></li>
+                                <li><strong>Biopestisida</strong> (misal Baculovirus)</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 10,
+                        title: "Struktur bakteriofag",
+                        content: `
+                            <p><strong>Bagian & fungsi:</strong></p>
+                            <ul>
+                                <li><strong>Kepala (capsid)</strong> → menyimpan DNA/RNA</li>
+                                <li><strong>Ekor</strong> → menempel di bakteri</li>
+                                <li><strong>Serabut ekor</strong> → mengenali & menempel ke inang</li>
+                                <li><strong>Selubung ekor</strong> → menembakkan DNA</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 11,
+                        title: "Perbedaan daur litik & lisogenik",
+                        content: `
+                            <p><strong>Litik:</strong> cepat, virus merusak sel.</p>
+                            <p>Tahapan: adsorpsi → injeksi → sintesis → perakitan → lisis.</p>
+                            
+                            <p><strong>Lisogenik:</strong></p>
+                            <ul>
+                                <li>DNA virus menyatu dengan DNA inang (<strong>profag</strong>)</li>
+                                <li>Tidak langsung merusak</li>
+                            </ul>
+                            
+                            <div class="info-box">
+                                <div class="info-title"><i class="fas fa-info-circle"></i> Pembeda:</div>
+                                <p>Tahap <strong>integrasi</strong> hanya ada di lisogenik.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 12,
+                        title: "Identifikasi gambar tahapan litik",
+                        content: `
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-images"></i> Contoh:</div>
+                                <ul>
+                                    <li>Virus menempel → <strong>adsorpsi</strong></li>
+                                    <li>DNA masuk → <strong>penetrasi</strong></li>
+                                    <li>Virus disintesis → <strong>biosintesis</strong></li>
+                                    <li>Virus baru terbentuk → <strong>perakitan</strong></li>
+                                    <li>Sel pecah → <strong>lisis</strong></li>
+                                </ul>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 13,
+                        title: "Ciri-ciri virus",
+                        content: `
+                            <p><strong>Ciri penting:</strong></p>
+                            <ul>
+                                <li>Aseluler (tidak punya sel)</li>
+                                <li>Hanya punya <strong>DNA atau RNA</strong></li>
+                                <li>Hanya hidup dalam sel inang</li>
+                                <li>Tidak punya metabolisme sendiri</li>
+                                <li>Dapat dikristalkan</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 14,
+                        title: "Ilmuwan TMV",
+                        content: `
+                            <p>Ilmuwan yang membuktikan virus bisa bereplikasi di inang:</p>
+                            <p><strong>Wendell Meredith Stanley</strong></p>
+                            
+                            <div class="info-box">
+                                <div class="info-title"><i class="fas fa-info-circle"></i> Kontribusi:</div>
+                                <p>Dia mengkristalkan TMV dan membuktikan virus bukan bakteri.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 15,
+                        title: "Manfaat rekayasa plasmid (vaksin)",
+                        content: `
+                            <p>Plasmid rekombinan digunakan untuk:</p>
+                            <ul>
+                                <li><strong>Memproduksi antigen/vaksin</strong></li>
+                            </ul>
+                            
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-syringe"></i> Contoh:</div>
+                                <p>vaksin Hepatitis B buatan rekayasa genetika.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 16,
+                        title: "Alasan virus tidak masuk lima kingdom",
+                        content: `
+                            <p>Karena:</p>
+                            <ul>
+                                <li>Tidak tersusun atas sel</li>
+                                <li>Tidak melakukan metabolisme</li>
+                                <li>Tidak tumbuh & berkembang</li>
+                                <li>Hanya hidup dalam sel inang</li>
+                            </ul>
+                            
+                            <div class="info-box">
+                                <div class="info-title"><i class="fas fa-info-circle"></i> Kesimpulan:</div>
+                                <p>→ <strong>Tidak memenuhi ciri makhluk hidup utuh</strong></p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 23,
+                        title: "Vaksin virus mati",
+                        content: `
+                            <p><strong>Ciri:</strong></p>
+                            <ul>
+                                <li>Virus dimatikan (kimia/panas)</li>
+                                <li>Aman untuk imun tubuh lemah</li>
+                                <li>Resiko rendah menyebabkan infeksi</li>
+                                <li>Perlu booster karena respons imun kurang kuat</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        number: 24,
+                        title: "Tindakan melindungi diri dari COVID-19",
+                        content: `
+                            <p><strong>Tindakan benar:</strong></p>
+                            <ul>
+                                <li>Masker</li>
+                                <li>Cuci tangan</li>
+                                <li>Jaga jarak</li>
+                                <li>Vaksin</li>
+                                <li>Ventilasi ruangan</li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Tindakan salah:</div>
+                                <p>minum herbal tertentu sebagai pengganti vaksin, dll.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 28,
+                        title: "Dua siklus reproduksi virus",
+                        content: `
+                            <p><strong>Dua siklus utama:</strong></p>
+                            <ul>
+                                <li><strong>Litik</strong></li>
+                                <li><strong>Lisogenik</strong></li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Catatan:</div>
+                                <p>Selain itu (fragmentasi, pembelahan, sporulasi) bukan punya virus.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 29,
+                        title: "Penyakit yang jelas disebabkan oleh virus",
+                        content: `
+                            <p><strong>Penyakit virus umum:</strong></p>
+                            <ul>
+                                <li>Influenza</li>
+                                <li>COVID-19</li>
+                                <li>HIV/AIDS</li>
+                                <li>Campak</li>
+                                <li>Rabies</li>
+                                <li>Hepatitis</li>
+                                <li>Dengue</li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Bukan virus:</div>
+                                <p>malaria (parasit), TBC (bakteri).</p>
+                            </div>
+                        `
+                    }
+                ]
+            },
+            {
+                category: "Bioteknologi – Nomor 17-21 & 30",
+                icon: "fas fa-flask",
+                indicators: [
+                    {
+                        number: 17,
+                        title: "Mikroorganisme pada tempe",
+                        content: `
+                            <p><strong>Mikroba utama:</strong></p>
+                            <p><strong>Rhizopus oligosporus</strong> (kapang)</p>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Catatan:</div>
+                                <p>Bukan bakteri atau jamur lain.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 18,
+                        title: "Teknik kloning Domba Dolly",
+                        content: `
+                            <p><strong>Langkah penting:</strong></p>
+                            <ol>
+                                <li>Ambil sel somatik domba dewasa</li>
+                                <li>Ambil sel telur dari domba lain</li>
+                                <li>Hilangkan inti sel telur</li>
+                                <li>Masukkan inti sel somatik → jadi <strong>embrio kloning</strong></li>
+                                <li>Embrio ditanam ke induk pengganti</li>
+                            </ol>
+                            
+                            <div class="info-box">
+                                <div class="info-title"><i class="fas fa-info-circle"></i> Hasil genetik:</div>
+                                <p>100% identik dengan donor inti.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 19,
+                        title: "Bioteknologi untuk memperbaiki lingkungan",
+                        content: `
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-recycle"></i> Contoh:</div>
+                                <ul>
+                                    <li>Bioremediasi</li>
+                                    <li>Biosorpsi logam berat</li>
+                                    <li>Biodegradasi limbah</li>
+                                    <li>Tanaman fitoremediasi</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Fokus:</div>
+                                <p><strong>memperbaiki kerusakan lingkungan</strong>, bukan industri pangan.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 20,
+                        title: "Sumber PST dari ganggang hijau",
+                        content: `
+                            <p>Ganggang hijau yang aman dikonsumsi:</p>
+                            <p><strong>Chlorella sp.</strong></p>
+                            
+                            <div class="info-box">
+                                <div class="info-title"><i class="fas fa-info-circle"></i> Penggunaan:</div>
+                                <p>Dipakai sebagai protein sel tunggal (PST).</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 21,
+                        title: "Baculovirus sebagai biopestisida",
+                        content: `
+                            <p><strong>Karakteristik:</strong></p>
+                            <ul>
+                                <li>Menyerang serangga (ulat) saja</li>
+                                <li>Aman untuk manusia, hewan, tanaman</li>
+                                <li>Tidak mencemari lingkungan</li>
+                                <li>Kerjanya lambat tapi efektif</li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Evaluasi:</div>
+                                <p>cek apakah sesuai sifat asli Baculovirus.</p>
+                            </div>
+                        `
+                    },
+                    {
+                        number: 30,
+                        title: "Produk bioteknologi konvensional",
+                        content: `
+                            <p>Menggunakan mikroorganisme alami, teknik sederhana:</p>
+                            
+                            <div class="example-box">
+                                <div class="example-title"><i class="fas fa-utensils"></i> Contoh:</div>
+                                <ul>
+                                    <li>Tempe</li>
+                                    <li>Yogurt</li>
+                                    <li>Keju</li>
+                                    <li>Tapai</li>
+                                    <li>Nata de coco</li>
+                                    <li>Cuka</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tip-box">
+                                <div class="tip-title"><i class="fas fa-lightbulb"></i> Bukan konvensional:</div>
+                                <p>insulin rekombinan, vaksin DNA.</p>
+                            </div>
+                        `
+                    }
+                ]
+            }
+        ];
+
+        // DOM Elements
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        const themeToggle = document.getElementById('themeToggle');
+        const searchBox = document.getElementById('searchBox');
+        const navList = document.getElementById('navList');
+        const contentContainer = document.getElementById('contentContainer');
+        const scrollTop = document.getElementById('scrollTop');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide welcome overlay after 3 seconds
+            setTimeout(() => {
+                welcomeOverlay.classList.add('hidden');
+            }, 3000);
+
+            generateNavigation();
+            generateContent();
+            setupEventListeners();
+            
+            // Set initial theme based on user preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                updateThemeIcon();
+            }
+        });
+
+        // Generate navigation menu
+        function generateNavigation() {
+            let navHTML = '';
+            
+            kisiKisiData.forEach(section => {
+                section.indicators.forEach(indicator => {
+                    navHTML += `
+                        <li class="nav-item">
+                            <a href="#indicator-${indicator.number}" class="nav-link" data-number="${indicator.number}">
+                                <span class="nav-number">${indicator.number}</span>
+                                <span class="nav-text">${indicator.title.substring(0, 45)}${indicator.title.length > 45 ? '...' : ''}</span>
+                            </a>
+                        </li>
+                    `;
+                });
+            });
+            
+            navList.innerHTML = navHTML;
+        }
+
+        // Generate content sections
+        function generateContent() {
+            let contentHTML = '';
+            
+            kisiKisiData.forEach(section => {
+                contentHTML += `
+                    <section class="section-card">
+                        <h2 class="section-title">
+                            <i class="${section.icon}"></i>
+                            ${section.category}
+                        </h2>
+                        <div class="indicators-container">
+                `;
+                
+                section.indicators.forEach(indicator => {
+                    contentHTML += `
+                        <div class="indicator-card" id="indicator-${indicator.number}">
+                            <div class="indicator-header">
+                                <div class="indicator-number">${indicator.number}</div>
+                                <div class="indicator-title">${indicator.title}</div>
+                            </div>
+                            <div class="indicator-content">${indicator.content}</div>
+                        </div>
+                    `;
+                });
+                
+                contentHTML += `
+                        </div>
+                    </section>
+                `;
+            });
+            
+            contentContainer.innerHTML = contentHTML;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Search functionality
+            searchBox.addEventListener('input', filterIndicators);
+            
+            // Scroll to top button
+            window.addEventListener('scroll', toggleScrollTop);
+            scrollTop.addEventListener('click', scrollToTop);
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 992) {
+                            sidebar.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992 && 
+                    !sidebar.contains(e.target) && 
+                    e.target !== mobileMenuBtn && 
+                    !mobileMenuBtn.contains(e.target)) {
+                    sidebar.style.display = 'none';
+                }
+            });
+        }
+
+        // Toggle between light and dark mode
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            updateThemeIcon();
+            
+            // Save preference to localStorage
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        // Update theme icon based on current mode
+        function updateThemeIcon() {
+            const icon = themeToggle.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            if (sidebar.style.display === 'block') {
+                sidebar.style.display = 'none';
+            } else {
+                sidebar.style.display = 'block';
+            }
+        }
+
+        // Filter indicators based on search input
+        function filterIndicators() {
+            const searchTerm = searchBox.value.toLowerCase();
+            const navItems = document.querySelectorAll('.nav-item');
+            const indicators = document.querySelectorAll('.indicator-card');
+            let hasResults = false;
+            
+            navItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            indicators.forEach(indicator => {
+                const text = indicator.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    indicator.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    indicator.style.display = 'none';
+                }
+            });
+            
+            // Show message if no results
+            if (!hasResults && searchTerm) {
+                if (!document.getElementById('noResults')) {
+                    const noResults = document.createElement('div');
+                    noResults.id = 'noResults';
+                    noResults.textContent = 'Tidak ada hasil yang ditemukan';
+                    noResults.style.textAlign = 'center';
+                    noResults.style.padding = '2rem';
+                    noResults.style.color = 'var(--text)';
+                    noResults.style.opacity = '0.7';
+                    contentContainer.appendChild(noResults);
+                }
+            } else {
+                const noResults = document.getElementById('noResults');
+                if (noResults) noResults.remove();
+            }
+        }
+
+        // Toggle scroll to top button visibility
+        function toggleScrollTop() {
+            if (window.pageYOffset > 400) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Load saved theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedDarkMode = localStorage.getItem('darkMode');
+            if (savedDarkMode === 'true') {
+                document.body.classList.add('dark-mode');
+                updateThemeIcon();
+            }
+        });
+    </script>
+</body>
+</html>
